@@ -1,11 +1,8 @@
-// quick and dirty
-
-// add "" around keys
-
-// add "" around values?
+// quick and dirty aeon parser
+var inputName = process.argv[2]
 
 fs = require('fs')
-fs.readFile('./example/calculator.aeon', 'utf8', function (err, raw) {
+fs.readFile(inputName, 'utf8', function (err, raw) {
   if (err) {
     return console.log(err);
   }
@@ -48,7 +45,6 @@ fs.readFile('./example/calculator.aeon', 'utf8', function (err, raw) {
   			op1 = ''
   		}
   	}
-
 
 
   	jsonString = jsonString + token
