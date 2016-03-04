@@ -60,18 +60,27 @@ fs.readFile('./example/calculator.aeon', 'utf8', function (err, raw) {
   jsonString = jsonString.replace(/"~&~"/g, '"&"')
   jsonString = jsonString.replace(/:""/g, '":"')
   jsonString = jsonString.replace(/,}/g, '}')
-	
-  //console.log(jsonString);
-  //var padded = raw.replace('{', ' { ').replace('}', ' } ')
+  jsonString = jsonString.replace(/"''"/g, '""')
 
-  //console.log(raw);
-  //for (var i = 0; i <= raw.length; i++ ) {
-  //	console.log(raw.charAt(i))
-  //}
 
-	var object = JSON.parse(jsonString)
-	var util = require('util')
+	var newObj = JSON.parse(jsonString)
 
-	console.log(util.inspect(object, {depth: null}))
+	var outputFilename = '/tmp/my.json';
+
+	fs.writeFile(outputFilename, JSON.stringify(newObj, null, 4), function(err) {
+	    if(err) {
+	      console.log(err);
+	    } else {
+			fs.readFile(outputFilename, 'utf8', function (err, newRaw) {
+			  if (err) {
+			    return console.log(err);
+			  }
+
+			  console.log(newRaw)
+
+			});
+	    }
+	}); 
+
 
 });
