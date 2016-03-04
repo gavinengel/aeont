@@ -1,0 +1,23 @@
+{
+  "name": "aeont",
+  "version": "1.0.0",
+  "description": "Transpile aeon files into json",
+  "main": "aeont.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavinengel/aeont.git"
+  },
+  "keywords": [],
+  "author": "Gavin Engel <gavin@engel.com> (http://www.gavinengel.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gavinengel/aeont/issues"
+  },
+  "homepage": "https://github.com/gavinengel/aeont#readme"
+}
