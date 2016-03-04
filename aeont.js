@@ -7,6 +7,8 @@ fs.readFile(inputName, 'utf8', function (err, raw) {
     return console.log(err);
   }
 
+  // version 0.0.1
+  // accept: aeon string ...
   var tokens = raw.match(/\S+/g)
   var op1 = ''
   var jsonString = ''
@@ -36,7 +38,7 @@ fs.readFile(inputName, 'utf8', function (err, raw) {
   	else if	(token.length == 2 && token.charAt(1) == ':') {
 
   		var op1 = token.charAt(0)
-  		token = ': [ "~' + op1 + '~", '
+  		token = ': [ "~QUOTE~' + op1 + '~QUOTE~", '
   	}
   	else {
   		token = '"' + token + '"'
@@ -53,13 +55,14 @@ fs.readFile(inputName, 'utf8', function (err, raw) {
   // cheats: 
   jsonString = "{"+jsonString+"}" 
   jsonString = jsonString.replace(/"&"/g, ' & ')
-  jsonString = jsonString.replace(/"~&~"/g, '"&"')
+  jsonString = jsonString.replace(/~QUOTE~/g, '"')
   jsonString = jsonString.replace(/:""/g, '":"')
   jsonString = jsonString.replace(/,}/g, '}')
   jsonString = jsonString.replace(/"''"/g, '""')
 
 
 	var newObj = JSON.parse(jsonString)
+  // return : json obj
 
 	var outputFilename = '/tmp/my.json';
 
